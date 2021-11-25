@@ -1,19 +1,21 @@
 # -*- coding: utf-8 -*-
 import streamlit as st
-import webbrowser
+
 
 #Designated Areas for app to be seperated by
-header = st.container()
+header = st.container()#header region holds title, and instructions
 buttons = st.container()
+footer = st.container()
 
 #Displaying title and then a little information about how to run the app 
 with header:
-    st.title('Welcome to the regional GIS finder!')
+    st.title('Welcome to the Lower Mainland GIS finder!')
     st.text('This project is a quick app to save time when looking for local GIS utility maps')
     st.text('Simply select the city from the dropdown box and then hit the "Click me button"')
+    st.text('Then click on the link provided')
     st.text('Cheers - M.V.')
-    
-    
+#Due to interaction with Streamlit a dictionary is used to hold the values of the URL, to help with UI interaction   
+#Dictionary filled with the municipality names aong with their URL values    
 dict_of_cities = {'Surrey' : 'https://cosmos.surrey.ca/external/',
                   'Vancouver' : 'https://maps.vancouver.ca/vanmap-viewer/',
                   'North Vancouver' : 'http://gisext2.cnv.org/citymap/',
@@ -44,19 +46,23 @@ List_of_cities = ['Surrey',
                   'Port Moody',
                   'Coquitlam',
                   'West Vancouver']
-
+#This selectbox will give all options in List_of_Cities
 with buttons:
     selection = st.selectbox('Select City', List_of_cities)    
     
     result = st.button('Click Me')
-    
+#Iterating over cities_items assigning the designated city's URL to the variable "selected_city"   
 for city , value in cities_items:
     if city == selection:
         selected_city = value    
-    
+#Finally the result is displayed in markdown as a clickable link    
 if result:
     
-    webbrowser.open(selected_city)
+    st.markdown(selected_city,unsafe_allow_html=True) 
+
+with footer:
+    st.text('Any feedback, let me know at mark@quadralocating.com')
+    st.text('Thanks for stopping by! Hope it saved you a couple seconds!')
     
         
 
