@@ -41,7 +41,7 @@ cities_items = dict_of_cities.items()
 List_of_cities = ['Surrey',
                   'Vancouver',
                   'City of North Vancouver',
-                  'District of North Vancouver'
+                  'District of North Vancouver',
                   'New Westminister',
                   'Burnaby',
                   'Abbotsford',
