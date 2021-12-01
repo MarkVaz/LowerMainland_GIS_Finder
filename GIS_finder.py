@@ -15,10 +15,10 @@ with header:
     st.text('Then click on the link provided')
     st.text('Cheers - M.V.')
 #Due to interaction with Streamlit a dictionary is used to hold the values of the URL, to help with UI interaction   
-#Dictionary filled with the municipality names aong with their URL values    
+#Dictionary filled with the municipality names along with their URL values    
 dict_of_cities = {'Surrey' : 'https://cosmos.surrey.ca/external/',
                   'Vancouver' : 'https://maps.vancouver.ca/vanmap-viewer/',
-                  'North Vancouver' : 'http://gisext2.cnv.org/citymap/',
+                  'City of North Vancouver' : 'http://gisext2.cnv.org/citymap/',
                   'New Westminister' : 'http://arcgis.newwestcity.ca/Html5Viewer4122/index.html?viewer=CNWPublicMap',
                   'Burnaby' : 'https://gis.burnaby.ca/burnabymap/index.html',
                   'Abbotsford' : 'https://maps.abbotsford.ca/Html5Viewer/',
@@ -28,14 +28,20 @@ dict_of_cities = {'Surrey' : 'https://cosmos.surrey.ca/external/',
                   'Coquitlam' : 'https://www.arcgis.com/apps/webappviewer/index.html?id=2d58aee859754918ae54d30da4bbba49',
                   'Port Moody' : 'https://view.portmoody.ca/portal/apps/webappviewer/index.html?id=bb8dde24dcef4b06b1e66c4465a3b80c',
                   'Port Coquitlam' : 'https://maps.portcoquitlam.ca/Html5Viewer/index.html?viewer=Public.v1',
-                  'West Vancouver' : 'https://westmap.westvancouver.ca/html5Viewer/?viewer=WestMap_2019.Default_Viewer'}
+                  'West Vancouver' : 'https://westmap.westvancouver.ca/html5Viewer/?viewer=WestMap_2019.Default_Viewer',
+                  'Pitt Meadows': 'https://pittmeadows.myplanworx.com/public.aspx?apikey=f50d9903-5f23-4203-bacb-facb31f565f0',
+                  'Mission':'Unavailable at the moment',
+                  'Maple Ridge':'https://gis.mapleridge.ca/ridgeview/',
+                  'District of North Vancouver':'https://geoweb.dnv.org/properties/',
+                  'Chilliwack':'https://maps.chilliwack.com/b/'}
 
 cities_items = dict_of_cities.items()
     
     
 List_of_cities = ['Surrey',
                   'Vancouver',
-                  'North Vancouver',
+                  'City of North Vancouver',
+                  'District of North Vancouver'
                   'New Westminister',
                   'Burnaby',
                   'Abbotsford',
@@ -45,7 +51,11 @@ List_of_cities = ['Surrey',
                   'Port Coquitlam',
                   'Port Moody',
                   'Coquitlam',
-                  'West Vancouver']
+                  'West Vancouver',
+                  'Pitt Meadows',
+                  'Mission',
+                  'Maple Ridge',
+                  'Chilliwack']
 #This selectbox will give all options in List_of_Cities
 with buttons:
     selection = st.selectbox('Select City', List_of_cities)    
