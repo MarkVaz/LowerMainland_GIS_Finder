@@ -56,6 +56,8 @@ List_of_cities = ['Surrey',
                   'Mission',
                   'Maple Ridge',
                   'Chilliwack']
+
+Page_Visits = 0
 #This selectbox will give all options in List_of_Cities
 with buttons:
     selection = st.selectbox('Select City', List_of_cities)    
@@ -68,11 +70,14 @@ for city , value in cities_items:
 #Finally the result is displayed in markdown as a clickable link    
 if result:
     
-    st.markdown(selected_city,unsafe_allow_html=True) 
+    st.markdown(selected_city,unsafe_allow_html=True)
+    Page_Visits += 1
 
 with footer:
     st.text('Any feedback, let me know at mark@quadralocating.com')
     st.text('Thanks for stopping by! Hope it saved you a couple seconds!')
+    st.text('Number of times used:')
+    st.markdown(Page_Visits)
     
         
 
