@@ -60,7 +60,7 @@ List_of_cities = ['Surrey',
                   'Chilliwack',
                   'Central Okanagan']
 
-with open("count.txt", "r") as f:
+with open("Count.txt", "r") as f:
     a = f.readline()  # starts as a string
     a = 0 if a == "" else int(a)  # check if its an empty string, otherwise should be able to cast using int()
 
