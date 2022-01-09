@@ -14,6 +14,7 @@ with header:
     st.text('Simply select the city from the dropdown box and then hit the "Click me button"')
     st.text('Then click on the link provided')
     st.text('Cheers - M.V.')
+    
 #Due to interaction with Streamlit a dictionary is used to hold the values of the URL, to help with UI interaction   
 #Dictionary filled with the municipality names along with their URL values    
 dict_of_cities = {'Surrey' : 'https://cosmos.surrey.ca/external/',
@@ -33,7 +34,8 @@ dict_of_cities = {'Surrey' : 'https://cosmos.surrey.ca/external/',
                   'Mission':'Unavailable at the moment',
                   'Maple Ridge':'https://gis.mapleridge.ca/ridgeview/',
                   'District of North Vancouver':'https://geoweb.dnv.org/properties/',
-                  'Chilliwack':'https://maps.chilliwack.com/b/'}
+                  'Chilliwack':'https://maps.chilliwack.com/b/',
+                  'Central Okanagan':'https://www.rdcogis.com/GIS_App_public/index.html'}
 
 cities_items = dict_of_cities.items()
     
@@ -55,9 +57,14 @@ List_of_cities = ['Surrey',
                   'Pitt Meadows',
                   'Mission',
                   'Maple Ridge',
-                  'Chilliwack']
+                  'Chilliwack',
+                  'Central Okanagan']
 
-Page_Visits = 0
+with open("count.txt", "r") as f:
+    a = f.readline()  # starts as a string
+    a = 0 if a == "" else int(a)  # check if its an empty string, otherwise should be able to cast using int()
+
+    
 #This selectbox will give all options in List_of_Cities
 with buttons:
     selection = st.selectbox('Select City', List_of_cities)    
@@ -69,15 +76,19 @@ for city , value in cities_items:
         selected_city = value    
 #Finally the result is displayed in markdown as a clickable link    
 if result:
-    
+    a += 1  
+    with open("file.txt", "w") as f:
+        f.truncate()
+        f.write(f"{a}")
+        
     st.markdown(selected_city,unsafe_allow_html=True)
-    Page_Visits += 1
+    
 
 with footer:
     st.text('Any feedback, let me know at mark@quadralocating.com')
     st.text('Thanks for stopping by! Hope it saved you a couple seconds!')
-    st.text('Number of times used:')
-    st.markdown(Page_Visits)
+    
+    
     
         
 
