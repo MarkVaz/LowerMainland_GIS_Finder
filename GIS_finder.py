@@ -35,34 +35,22 @@ dict_of_cities = {'Surrey' : 'https://cosmos.surrey.ca/external/',
                   'Maple Ridge':'https://gis.mapleridge.ca/ridgeview/',
                   'District of North Vancouver':'https://geoweb.dnv.org/properties/',
                   'Chilliwack':'https://maps.chilliwack.com/b/',
-                  'Central Okanagan':'https://www.rdcogis.com/GIS_App_public/index.html'}
+                  'Central Okanagan':'https://www.rdcogis.com/GIS_App_public/index.html',
+                  'Metro Vancouver Sewers':'https://gis.metrovancouver.org/mvmaps/Sewer',
+                  'Metro Vancouver Water':'https://gis.metrovancouver.org/mvmaps/Water',
+                  'Richmond':'https://maps.richmond.ca/rim/',
+                  'Anmore':'https://islengineering.maps.arcgis.com/apps/MapTools/index.html?appid=87be9965f3124348b6228d308a143da8'}
 
 cities_items = dict_of_cities.items()
     
     
-List_of_cities = ['Surrey',
-                  'Vancouver',
-                  'City of North Vancouver',
-                  'District of North Vancouver',
-                  'New Westminister',
-                  'Burnaby',
-                  'Abbotsford',
-                  'Langley City',
-                  'Langley Township',
-                  'Delta',
-                  'Port Coquitlam',
-                  'Port Moody',
-                  'Coquitlam',
-                  'West Vancouver',
-                  'Pitt Meadows',
-                  'Mission',
-                  'Maple Ridge',
-                  'Chilliwack',
-                  'Central Okanagan']
+List_of_cities = []
 
-with open("Count.txt", "r") as f:
-    a = f.readline()  # starts as a string
-    a = 0 if a == "" else int(a)  # check if its an empty string, otherwise should be able to cast using int()
+for city, value in cities_items:
+    List_of_cities.append(city)
+
+List_of_cities.sort()
+
 
     
 #This selectbox will give all options in List_of_Cities
@@ -76,10 +64,6 @@ for city , value in cities_items:
         selected_city = value    
 #Finally the result is displayed in markdown as a clickable link    
 if result:
-    a += 1  
-    with open("file.txt", "w") as f:
-        f.truncate()
-        f.write(f"{a}")
         
     st.markdown(selected_city,unsafe_allow_html=True)
     
@@ -88,6 +72,7 @@ with footer:
     st.text('Any feedback, let me know at mark@quadralocating.com')
     st.text('Thanks for stopping by! Hope it saved you a couple seconds!')
     
+
     
     
         
